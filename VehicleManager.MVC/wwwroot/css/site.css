@@ -19,4 +19,33 @@ html {
 
 body {
     margin-bottom: 60px;
+    background: #8acdeb;
+}
+
+span {
+    font-family: serif;
+    font-size: medium;
+    font-style: italic;
+}
+
+.panel {
+    background: white;
+    margin-top: 1rem;
+}
+
+.arrow-R {
+    background: none;
+    border: none;
+    transform: rotate(180deg);
+    position: absolute;
+    right: 0;
+    bottom: 50%;
+}
+
+.arrow-L {
+    background: none;
+    border: none;
+    position: absolute;
+    left: 0;
+    bottom: 50%;
 }

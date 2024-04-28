@@ -43,6 +43,13 @@ namespace VehicleManager.MVC.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult LogoutAction()
+        {
+            RemoverUsuarioDaSessao();
+            return RedirectToAction("Login", "Home");
+        }
+
         private void ArmazenarUsuarioNaSessao(User user)
         {
             var session = _httpContextAccessor.HttpContext.Session;
@@ -61,6 +68,11 @@ namespace VehicleManager.MVC.Controllers
             }
 
             return null;
+        }
+
+        private void RemoverUsuarioDaSessao()
+        {
+            _httpContextAccessor.HttpContext.Session.Remove("UserData");
         }
     }
 }

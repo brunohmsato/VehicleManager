@@ -4,28 +4,102 @@
     bool isAdmin = Model != null && Model.isAdmin;
 }
 
-<link href="~/css/animation.css" rel="stylesheet" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="~/css/animation.css" rel="stylesheet" />
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
-<div class="text-center">
-    @if (isAdmin == false)
-    {
-		<div id="container">
-			<div class="steam" id="steam1"> </div>
-			<div class="steam" id="steam2"> </div>
-			<div class="steam" id="steam3"> </div>
-			<div class="steam" id="steam4"> </div>
+		.title{
+			color: #0056b3;
+			position: relative;
+			top: 50px;
+		}
 
-			<div id="cup">
-				<div id="cup-body">
-					<div id="cup-shade"></div>
-				</div>
-				<div id="cup-handle"></div>
+		.containerr {
+			display: flex;
+			height: 77vh;
+			width: 81vw;
+		}
+
+		.column {
+			flex: 1;
+			padding: 20px;
+			text-align: center;
+			align-self: center;
+		}
+
+		.button {
+			display: inline-block;
+			padding: 10px 90px;
+			background-color: #007bff;
+			color: #fff;
+			text-decoration: none;
+			border-radius: 5px;
+			transition: background-color 0.3s;
+		}
+
+			.button:hover {
+				background-color: #0056b3;
+				color: #fff;
+			}
+	</style>
+</head>
+<body>
+	<div class="text-center">
+		@if (isAdmin == true)
+		{
+			<div>
+				<h2 class="title">Selecione o item que deseja cadastrar abaixo:</h2>
 			</div>
 
-			<div id="saucer"></div>
+			<div class="containerr">
+				<div class="column">
+					<a href="/Fuel/Index" class="button">Combustível</a>
+				</div>
+				<div class="column">
+					<a href="/Color/Index" class="button">Cor</a>
+				</div>
+				<div class="column">
+					<a href="/Vehicle/Index" class="button">Veículo</a>
+				</div>
+			</div>
+		}
+		else
+		{
+			<div>
+				<h2>Bem vindo usuário!</h2>
+			</div>
 
-			<div id="shadow"></div>
-		</div>
-    }
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+			<div id="container">
+				<div class="steam" id="steam1"> </div>
+				<div class="steam" id="steam2"> </div>
+				<div class="steam" id="steam3"> </div>
+				<div class="steam" id="steam4"> </div>
+
+				<div id="cup">
+					<div id="cup-body">
+						<div id="cup-shade"></div>
+					</div>
+					<div id="cup-handle"></div>
+				</div>
+
+				<div id="saucer"></div>
+
+				<div id="shadow"></div>
+			</div>
+
+			<div class="mt-25">
+				<span>Infelizmente você não tem privilégios de administrador.</span> <br />
+				<span>Mas tudo bem, você ainda pode apreciar esse template bacana.</span>
+			</div>
+		}
+	</div>
+</body>
+</html>

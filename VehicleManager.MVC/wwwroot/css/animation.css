@@ -4,7 +4,7 @@
 
 #container {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -147,4 +147,13 @@
     margin-top: 22px;
     margin-left: 6px;
     background-color: #7bb8d4;
+}
+
+h2 {
+    top: 4rem;
+    position: relative;
+}
+
+.mt-25 {
+    margin-top: 25rem;
 }

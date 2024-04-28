@@ -14,15 +14,17 @@
         <h2>Login</h2>
 
         <form asp-controller="Home" asp-action="LoginAction" method="post" class="form">
-            <input asp-for="Login" class="form-control" placeholder="Login" />
-            <span asp-validation-for="Login" class="text-danger"></span>
+            <div class="column">
+                <input asp-for="Login" class="form-control in-field" placeholder="Login" />
+                <span asp-validation-for="Login" class="text-danger"></span>
 
-            <input asp-for="Password" class="form-control" placeholder="Senha" type="password" />
-            <span asp-validation-for="Password" class="text-danger"></span>
+                <input asp-for="Password" class="form-control in-field" placeholder="Senha" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
 
-            <div class="form-control-lg">
-                <div class="col-md-10">
-                    <button type="submit" class="btn btn-success">Login</button>
+                <div class="form-control-lg">
+                    <div class="col-md-10">
+                        <button type="submit" class="btn btn-success">Login</button>
+                    </div>
                 </div>
             </div>
         </form>

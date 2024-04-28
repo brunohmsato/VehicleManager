@@ -1,20 +1,14 @@
-﻿@import "compass/css3";
-
-/* Resetando estilos padrão */
-* {
+﻿* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Estilos para o elemento HTML */
 html {
     background: #95a5a6;
-    background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_embroidery.png);
     font-family: "Helvetica Neue", Arial, Sans-Serif;
 }
 
-    /* Estilos para a classe .login-wrap */
     html.login-wrap {
         position: relative;
         margin: 0 auto;
@@ -23,9 +17,12 @@ html {
         border-radius: 5px;
         box-shadow: 3px 3px 10px #333;
         padding: 15px;
+        height: 42vh;
+        align-items: center;
+        display: grid;
+        margin-top: 10rem;
     }
 
-    /* Estilos para o título h2 */
     html h2 {
         text-align: center;
         font-weight: 200;
@@ -34,12 +31,10 @@ html {
         color: #34495e;
     }
 
-    /* Estilos para o formulário */
     html.form {
         padding-top: 20px;
     }
 
-        /* Estilos para inputs, senha e botão dentro do formulário */
         html.form input[type="text"],
         html.form input[type="password"],
         html.form button {
@@ -52,7 +47,6 @@ html {
             -moz-outline-style: none;
         }
 
-        /* Estilos específicos para inputs de texto e senha */
         html.form input[type="text"],
         html.form input[type="password"] {
             border: 1px solid #bbb;
@@ -60,46 +54,43 @@ html {
             font-size: 14px;
         }
 
-            /* Efeito de foco para inputs de texto e senha */
             html.form input[type="text"]:focus,
             html.form input[type="password"]:focus {
                 border: 1px solid #3498db;
             }
 
-/* Estilos para links */
 a {
     text-align: center;
     font-size: 10px;
     color: #3498db;
 }
 
-    /* Estilos para parágrafos dentro de links */
     a p {
         padding-bottom: 10px;
     }
 
-/* Estilos para botões */
 button {
     background: #e74c3c;
     border: none;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 200;
     cursor: pointer;
     transition: box-shadow 0.4s ease;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 16px;
 }
 
-    /* Efeito de hover para botões */
     button:hover {
         box-shadow: 1px 1px 5px #555;
     }
 
-    /* Efeito de clique para botões */
     button:active {
         box-shadow: 1px 1px 7px #222;
     }
 
-/* Estilos para o pseudo-elemento :after */
 html:after {
     content: "";
     position: absolute;
@@ -110,4 +101,24 @@ html:after {
     background: -moz-linear-gradient(left, #27ae60 0%, #27ae60 20%, #8e44ad 20%, #8e44ad 40%, #3498db 40%, #3498db 60%, #e74c3c 60%, #e74c3c 80%, #f1c40f 80%, #f1c40f 100%);
     height: 5px;
     border-radius: 5px 5px 0 0;
+}
+
+.column {
+    display: inline-grid;
+    width: 100vw;
+    padding-inline: 40%;
+}
+
+.login-wrap {
+    height: 42vh;
+    align-items: center;
+    display: grid;
+    margin-top: 10rem;
+}
+
+.in-field {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 5px;
 }
