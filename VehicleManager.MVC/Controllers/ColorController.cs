@@ -22,22 +22,22 @@ namespace VehicleManager.Web.Controllers
         {
             try
             {
-				throw new Exception("Erro simulado durante a adição da cor");
+                throw new Exception("Erro simulado durante a adição da cor");
 
-				if (ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
                     _colorService.Add(color);
                     return RedirectToAction("Index");
                 }
                 else
                 {
-					return View(color);
+                    return View(color);
                 }
             }
             catch (Exception)
             {
-				return RedirectToAction("Error", "Home");
-			}
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         [HttpGet]

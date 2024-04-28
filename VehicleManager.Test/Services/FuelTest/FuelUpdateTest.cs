@@ -6,24 +6,24 @@ using VehicleManager.Infra.Data.DbContext;
 
 namespace VehicleManager.Test.Services.FuelTest
 {
-	public class FuelUpdateTest
-	{
-		[Fact]
-		public void Update_CallsFuelRepositoryUpdate()
-		{
-			// Arrange
-			var fuelToUpdate = new Fuel { Id = 1, Description = "Gasoline", Status = true };
+    public class FuelUpdateTest
+    {
+        [Fact]
+        public void Update_CallsFuelRepositoryUpdate()
+        {
+            // Arrange
+            var fuelToUpdate = new Fuel { Id = 1, Description = "Gasoline", Status = true };
 
-			var fuelRepositoryMock = new Mock<IFuelRepository>();
-			var contextMock = new Mock<ApplicationDbContext>();
-			var fuelService = new FuelService(fuelRepositoryMock.Object);
+            var fuelRepositoryMock = new Mock<IFuelRepository>();
+            var contextMock = new Mock<ApplicationDbContext>();
+            var fuelService = new FuelService(fuelRepositoryMock.Object);
 
-			// Act
+            // Act
 
-			fuelService.Update(fuelToUpdate);
+            fuelService.Update(fuelToUpdate);
 
-			// Assert
-			fuelRepositoryMock.Verify(repo => repo.Update(fuelToUpdate), Times.Once);
-		}
-	}
+            // Assert
+            fuelRepositoryMock.Verify(repo => repo.Update(fuelToUpdate), Times.Once);
+        }
+    }
 }
