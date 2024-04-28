@@ -22,8 +22,6 @@ namespace VehicleManager.Web.Controllers
         {
             try
             {
-                throw new Exception("Erro simulado durante a adição da cor");
-
                 if (ModelState.IsValid)
                 {
                     _colorService.Add(color);
