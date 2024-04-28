@@ -1,0 +1,101 @@
+﻿@model VehicleManager.Domain.Models.Vehicle
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+	<h2>Excluir Veículo</h2>
+	<hr />
+
+	<h4>Deseja Realmente Excluir este Veículo?</h4>
+
+	<form asp-action="DeleteConfirmed">
+		<div>
+			<input type="hidden" asp-for="Id" />
+			<div class="form-control-lg">
+				<label asp-for="Plate" class="col-md-2 form-label">Placa</label>
+				<div class="col-md-10">
+					<input asp-for="Plate" class="form-control" />
+					<span asp-validation-for="Plate" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="Renavam" class="col-md-2 form-label">Renavam</label>
+				<div class="col-md-10">
+					<input asp-for="Renavam" class="form-control" />
+					<span asp-validation-for="Renavam" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="ChassiNumber" class="col-md-2 form-label">ChassiNumber</label>
+				<div class="col-md-10">
+					<input asp-for="ChassiNumber" class="form-control" />
+					<span asp-validation-for="ChassiNumber" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="MotorNumber" class="col-md-2 form-label">MotorNumber</label>
+				<div class="col-md-10">
+					<input asp-for="MotorNumber" class="form-control" />
+					<span asp-validation-for="MotorNumber" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="Brand" class="col-md-2 form-label">Brand</label>
+				<div class="col-md-10">
+					<input asp-for="Brand" class="form-control" />
+					<span asp-validation-for="Brand" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="Model" class="col-md-2 form-label">Model</label>
+				<div class="col-md-10">
+					<input asp-for="Model" class="form-control" />
+					<span asp-validation-for="Model" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="FuelId" class="col-md-2 form-label">Fuel</label>
+				<div class="col-md-10">
+					<select asp-for="FuelId" asp-items="@ViewBag.Fuels" class="form-control">
+						<option value="">Selecione...</option>
+					</select>
+					<span asp-validation-for="FuelId" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="ColorId" class="col-md-2 form-label">Color</label>
+				<div class="col-md-10">
+					<select asp-for="ColorId" asp-items="@ViewBag.Colors" class="form-control">
+						<option value="">Selecione...</option>
+					</select>
+					<span asp-validation-for="ColorId" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="CreatedYear" class="col-md-2 form-label">CreatedYear</label>
+				<div class="col-md-10">
+					<input asp-for="CreatedYear" class="form-control" />
+					<span asp-validation-for="CreatedYear" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="Status" class="col-md-2 form-label">Status</label>
+				<div class="col-md-10">
+					<select asp-for="Status" class="form-control">
+						<option value="true">Ativo</option>
+						<option value="false">Inativo</option>
+					</select>
+					<span asp-validation-for="Status" class="text-danger"></span>
+				</div>
+			</div>
+
+			<div class="form-control-lg">
+				<div class="col-md-10">
+					<input type="submit" value="Sim" class="btn btn-danger" />
+					<a asp-action="Index" class="btn btn-info">Não</a>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

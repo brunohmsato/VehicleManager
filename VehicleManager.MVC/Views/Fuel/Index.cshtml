@@ -1,0 +1,67 @@
+﻿@model List<VehicleManager.Domain.Models.Fuel>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.css" />
+</head>
+<body>
+    <div><h2>Cadastro de Combustível</h2></div>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div class="pull-left">
+                    <a asp-action="Add" class="btn btn-success">Cadastrar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <table id="fuelTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Status</th>
+                    <th>#</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var fuel in Model)
+                {
+                    <tr class="fuel-row" data-status="@fuel.Status">
+                        <td>@fuel.Description</td>
+                        <td>@(fuel.Status ? "Ativo" : "Inativo")</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@fuel.Id" class="btn btn-warning">Editar</a>
+                        </td>
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@fuel.Id" class="btn btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
+    <script>
+        new DataTable('#fuelTable', {
+            layout: {
+                bottomEnd: {
+                    paging: {
+                        boundaryNumbers: false
+                    }
+                }
+            }
+        });
+    </script>
+}

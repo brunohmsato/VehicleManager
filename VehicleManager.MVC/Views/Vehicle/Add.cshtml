@@ -1,0 +1,107 @@
+﻿@model VehicleManager.Domain.Models.Vehicle
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+	<h2>Novo Cadastro</h2>
+	<hr />
+
+	<form asp-controller="Vehicle" asp-action="Add" method="post" enctype="multipart/form-data">
+		<div>
+			<vc:summary />
+			<div class="form-control-lg">
+				<label asp-for="Plate" class="col-md-2 form-label">Placa</label>
+				<div class="col-md-10">
+					<input asp-for="Plate" class="form-control" />
+					<span asp-validation-for="Plate" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="Renavam" class="col-md-2 form-label">Renavam</label>
+				<div class="col-md-10">
+					<input asp-for="Renavam" class="form-control" />
+					<span asp-validation-for="Renavam" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="ChassiNumber" class="col-md-2 form-label">Número do Chassi</label>
+				<div class="col-md-10">
+					<input asp-for="ChassiNumber" class="form-control" />
+					<span asp-validation-for="ChassiNumber" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="MotorNumber" class="col-md-2 form-label">Número do Motor</label>
+				<div class="col-md-10">
+					<input asp-for="MotorNumber" class="form-control" />
+					<span asp-validation-for="MotorNumber" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="Brand" class="col-md-2 form-label">Marca</label>
+				<div class="col-md-10">
+					<input asp-for="Brand" class="form-control" />
+					<span asp-validation-for="Brand" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="Model" class="col-md-2 form-label">Modelo</label>
+				<div class="col-md-10">
+					<input asp-for="Model" class="form-control" />
+					<span asp-validation-for="Model" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="FuelId" class="col-md-2 form-label">Tipo de Combustível</label>
+				<div class="col-md-10">
+					<select asp-for="FuelId" asp-items="@ViewBag.Fuels" class="form-control">
+						<option value="">Selecione o combustível...</option>
+					</select>
+					<span asp-validation-for="FuelId" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="ColorId" class="col-md-2 form-label">Cor</label>
+				<div class="col-md-10">
+					<select asp-for="ColorId" asp-items="@ViewBag.Colors" class="form-control">
+						<option value="">Selecione a cor...</option>
+					</select>
+					<span asp-validation-for="ColorId" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="CreatedYear" class="col-md-2 form-label">Ano de Fabricação</label>
+				<div class="col-md-10">
+					<input asp-for="CreatedYear" class="form-control" />
+					<span asp-validation-for="CreatedYear" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="form-control-lg">
+				<label asp-for="Status" class="col-md-2 form-label">Status</label>
+				<div class="col-md-10">
+					<select asp-for="Status" class="form-control">
+						<option value="true">Ativo</option>
+						<option value="false">Inativo</option>
+					</select>
+					<span asp-validation-for="Status" class="text-danger"></span>
+				</div>
+			</div>
+
+			<div class="form-control-lg">
+				<label for="VehicleImage" class="col-md-2 form-label">Imagens</label>
+				<div class="col-md-10">
+					<input type="file" class="form-control" id="VehicleImage" name="imageFile" />
+					<span asp-validation-for="VehicleImage" class="text-danger"></span>
+				</div>
+			</div>
+
+			<div class="form-control-lg">
+				<div class="col-md-10">
+					<input type="submit" value="Adicionar" class="btn btn-success" />
+					<a asp-action="Index" class="btn btn-info">Voltar</a>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

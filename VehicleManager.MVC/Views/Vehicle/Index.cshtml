@@ -1,0 +1,79 @@
+﻿@model List<VehicleManager.Domain.Models.Vehicle>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.css" />
+</head>
+<body>
+    <div><h2>Cadastro de Veículo</h2></div>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div class="pull-left">
+                    <a asp-action="Add" class="btn btn-success">Cadastrar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <table id="vehicleTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Placa</th>
+                    <th>Renavam</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Combustível</th>
+                    <th>Cor</th>
+                    <th>Ano de Fabricação</th>
+                    <th>Status</th>
+                    <th>#</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var vehicle in Model)
+                {
+                    <tr>
+                        <td>@vehicle.Plate</td>
+                        <td>@vehicle.Renavam</td>
+                        <td>@vehicle.Brand</td>
+                        <td>@vehicle.Model</td>
+                        <td>@vehicle.SelectedFuelDescription</td>
+                        <td>@vehicle.SelectedColorDescription</td>
+                        <td style="text-align: center">@vehicle.CreatedYear</td>
+                        <td>@(vehicle.Status ? "Ativo" : "Inativo")</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@vehicle.Id" class="btn btn-warning">Editar</a>
+                        </td>
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@vehicle.Id" class="btn btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
+    <script>
+        new DataTable('#vehicleTable', {
+            layout: {
+                bottomEnd: {
+                    paging: {
+                        boundaryNumbers: false
+                    }
+                }
+            }
+        });
+    </script>
+}

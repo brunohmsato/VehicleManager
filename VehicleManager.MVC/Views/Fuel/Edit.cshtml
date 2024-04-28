@@ -1,0 +1,39 @@
+﻿@model VehicleManager.Domain.Models.Fuel
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <h2>Editar Combustível</h2>
+    <hr />
+
+    <form asp-action="Edit">
+        <div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-control-lg">
+                <label asp-for="Description" class="col-md-2 form-label">Descrição</label>
+                <div class="col-md-10">
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-control-lg">
+                <label asp-for="Status" class="col-md-2 form-label">Status</label>
+                <div class="col-md-10">
+                    <select asp-for="Status" class="form-control">
+                        <option value="true">Ativo</option>
+                        <option value="false">Inativo</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-control-lg">
+                <div class="col-md-10">
+                    <input type="submit" value="Salvar" class="btn btn-success" />
+                    <a asp-action="Index" class="btn btn-info">Voltar</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
