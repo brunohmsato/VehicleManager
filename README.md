@@ -13,8 +13,7 @@ Projeto desenvolvido para Fenox Tecnologia
 
 1. Clone o repositório: git clone https://github.com/brunohmsato/VehicleManager.git
 
-2. Copie a query disponível no arquivo de texto disponível no projeto: 
-`DbCreation.txt `
+2. Copie a query disponível no arquivo de texto na pasta "Docs" [aqui](https://github.com/brunohmsato/VehicleManager/blob/master/VehicleManager.Domain/Docs/DbCreation.txt);
 
 3. No SQL Server, execute a query copiada anteriormente. Faça uma nova consulta e gere as tabelas necessárias para a aplicação;
 
