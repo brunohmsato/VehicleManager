@@ -18,13 +18,6 @@ builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddControllersWithViews()
-    .AddJsonOptions(o =>
-    {
-        o.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-        o.JsonSerializerOptions.PropertyNamingPolicy = null;
-    });
-
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
 
@@ -54,7 +47,6 @@ app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
-    //pattern: "{controller=Home}/{action=Login}/{id?}");
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Login}/{id?}");
 
 app.Run();
