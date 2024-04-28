@@ -33,9 +33,9 @@ namespace VehicleManager.Web.Controllers
                     return View(fuel);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return View(fuel);
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -52,9 +52,9 @@ namespace VehicleManager.Web.Controllers
 
                 return View(_result);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -73,9 +73,9 @@ namespace VehicleManager.Web.Controllers
                     return View(fuel);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return View(fuel);
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -92,9 +92,9 @@ namespace VehicleManager.Web.Controllers
 
                 return View(_result);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -106,9 +106,9 @@ namespace VehicleManager.Web.Controllers
                 _fuelService.Delete(id);
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Error", "Home");
             }
         }
     }

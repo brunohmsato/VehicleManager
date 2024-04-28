@@ -22,20 +22,22 @@ namespace VehicleManager.Web.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+				throw new Exception("Erro simulado durante a adição da cor");
+
+				if (ModelState.IsValid)
                 {
                     _colorService.Add(color);
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    return View(color);
+					return View(color);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return View(color);
-            }
+				return RedirectToAction("Error", "Home");
+			}
         }
 
         [HttpGet]
@@ -51,9 +53,9 @@ namespace VehicleManager.Web.Controllers
 
                 return View(_result);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -72,9 +74,9 @@ namespace VehicleManager.Web.Controllers
                     return View(color);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return View(color);
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -91,9 +93,9 @@ namespace VehicleManager.Web.Controllers
 
                 return View(_result);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -105,9 +107,9 @@ namespace VehicleManager.Web.Controllers
                 _colorService.Delete(id);
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Error", "Home");
             }
         }
     }

@@ -8,9 +8,8 @@ using VehicleManager.MVC.Models;
 
 namespace VehicleManager.MVC.Controllers
 {
-    public class HomeController(ILogger<HomeController> logger, IUserService userService, IHttpContextAccessor httpContextAccessor) : Controller
+    public class HomeController(IUserService userService, IHttpContextAccessor httpContextAccessor) : Controller
     {
-        private readonly ILogger<HomeController> _logger = logger;
         private readonly IUserService _userService = userService;
         private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
 
@@ -20,16 +19,10 @@ namespace VehicleManager.MVC.Controllers
             return View(user);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        public IActionResult Privacy() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 
         [HttpGet]
         public IActionResult Login() => View();
