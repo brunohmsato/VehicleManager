@@ -1,0 +1,59 @@
+-- Criação do banco de dados
+CREATE DATABASE vehicle_manager;
+GO
+
+-- Utilização do banco de dados criado
+USE vehicle_manager;
+GO
+
+-- Criação da tabela 'user'
+CREATE TABLE [user] (
+    id INT PRIMARY KEY IDENTITY,
+    nome NVARCHAR(100),
+    login NVARCHAR(50),
+    password NVARCHAR(50),
+    isAdmin BIT
+);
+GO
+
+-- Criação da tabela 'fuel'
+CREATE TABLE [fuel] (
+    id INT PRIMARY KEY IDENTITY,
+    description NVARCHAR(20) UNIQUE,
+    status BIT
+);
+GO
+
+-- Criação da tabela 'color'
+CREATE TABLE [color] (
+    id INT PRIMARY KEY IDENTITY,
+    description NVARCHAR(20) UNIQUE,
+    status BIT
+);
+GO
+
+-- Criação da tabela 'vehicle'
+CREATE TABLE [vehicle] (
+    id INT PRIMARY KEY IDENTITY,
+    plate VARCHAR(7) UNIQUE,
+    renavam VARCHAR(11) UNIQUE,
+    chassi_number VARCHAR(17) UNIQUE,
+    motor_number VARCHAR(12) UNIQUE,
+    brand VARCHAR(50),
+    model VARCHAR(50),
+    fuel_id INT,
+    color_id INT,
+    manufacturing_year INT,
+    status BIT,
+    vehicle_images VARBINARY(MAX),
+    FOREIGN KEY (fuel_id) REFERENCES fuel(id),
+    FOREIGN KEY (color_id) REFERENCES color(id)
+);
+GO
+
+-- Inserção de dados na tabela 'user'
+INSERT INTO [user] (nome, login, password, isAdmin) VALUES
+('user comum', 'comum', 'comum', 0),
+('user admin', 'admin', 'admin', 1),
+('Fenox', 'fenoxtec', 'fenoxtec', 1);
+GO
