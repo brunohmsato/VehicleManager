@@ -95,8 +95,8 @@ namespace VehicleManager.Infra.Data.Repositories
                 connection.Open();
 
                 command.CommandText = @"
-                    SELECT v.id, v.plate, v.renavam, v.chassi_number, v.motor_number, v.brand, v.model, v.fuel_id, v.color_id, 
-                    f.description AS fuel_description, c.description AS color_description, 
+                    SELECT v.id, v.plate, v.renavam, v.chassi_number, v.motor_number, v.brand, v.model, v.fuel_id, v.color_id,
+                    f.description AS fuel_description, c.description AS color_description,
                     v.manufacturing_year, v.status
                     FROM vehicle v
                     JOIN fuel f ON v.fuel_id = f.id
@@ -139,8 +139,8 @@ namespace VehicleManager.Infra.Data.Repositories
             connection.Open();
 
             command.CommandText = @"
-                SELECT v.id, v.plate, v.renavam, v.chassi_number, v.motor_number, v.brand, v.model, v.fuel_id, v.color_id, 
-                f.description AS fuel_description, c.description AS color_description, 
+                SELECT v.id, v.plate, v.renavam, v.chassi_number, v.motor_number, v.brand, v.model, v.fuel_id, v.color_id,
+                f.description AS fuel_description, c.description AS color_description,
                 v.manufacturing_year, v.status, v.vehicle_images
                 FROM vehicle v
                 JOIN fuel f ON v.fuel_id = f.id
@@ -156,30 +156,30 @@ namespace VehicleManager.Infra.Data.Repositories
             using var reader = command.ExecuteReader();
             if (reader.Read())
             {
-				var vehicle = new Vehicle
-				{
-					Id = Convert.ToInt32(reader["id"]),
-					Plate = Convert.ToString(reader["plate"]),
-					Renavam = Convert.ToString(reader["renavam"]),
-					ChassiNumber = Convert.ToString(reader["chassi_number"]),
-					MotorNumber = Convert.ToString(reader["motor_number"]),
-					Brand = Convert.ToString(reader["brand"]),
-					Model = Convert.ToString(reader["model"]),
-					FuelId = Convert.ToInt32(reader["fuel_id"]),
-					ColorId = Convert.ToInt32(reader["color_id"]),
-					SelectedFuelDescription = Convert.ToString(reader["fuel_description"]),
-					SelectedColorDescription = Convert.ToString(reader["color_description"]),
-					CreatedYear = Convert.ToInt32(reader["manufacturing_year"]),
-					Status = Convert.ToBoolean(reader["status"])
-				};
+                var vehicle = new Vehicle
+                {
+                    Id = Convert.ToInt32(reader["id"]),
+                    Plate = Convert.ToString(reader["plate"]),
+                    Renavam = Convert.ToString(reader["renavam"]),
+                    ChassiNumber = Convert.ToString(reader["chassi_number"]),
+                    MotorNumber = Convert.ToString(reader["motor_number"]),
+                    Brand = Convert.ToString(reader["brand"]),
+                    Model = Convert.ToString(reader["model"]),
+                    FuelId = Convert.ToInt32(reader["fuel_id"]),
+                    ColorId = Convert.ToInt32(reader["color_id"]),
+                    SelectedFuelDescription = Convert.ToString(reader["fuel_description"]),
+                    SelectedColorDescription = Convert.ToString(reader["color_description"]),
+                    CreatedYear = Convert.ToInt32(reader["manufacturing_year"]),
+                    Status = Convert.ToBoolean(reader["status"])
+                };
 
-				if (!reader.IsDBNull(reader.GetOrdinal("vehicle_images")))
-				{
-					vehicle.VehicleImage = (byte[])reader["vehicle_images"];
-				}
+                if (!reader.IsDBNull(reader.GetOrdinal("vehicle_images")))
+                {
+                    vehicle.VehicleImage = (byte[])reader["vehicle_images"];
+                }
 
-				return vehicle;
-			}
+                return vehicle;
+            }
 
             return null;
         }
@@ -195,7 +195,7 @@ namespace VehicleManager.Infra.Data.Repositories
 
                 command.CommandText = "UPDATE [vehicle] SET plate = @plate, renavam = @renavam, chassi_number = @chassi, " +
                     "motor_number = @motor, brand = @brand, model = @model, fuel_id = @fuel_id, color_id = @color_id, " +
-					"manufacturing_year = @manufacturing_year, status = @status, vehicle_images = @image WHERE id = @id";
+                    "manufacturing_year = @manufacturing_year, status = @status, vehicle_images = @image WHERE id = @id";
 
                 var plateParameter = command.CreateParameter();
                 plateParameter.ParameterName = "@plate";
@@ -247,13 +247,13 @@ namespace VehicleManager.Infra.Data.Repositories
                 statusParameter.Value = vehicle.Status;
                 command.Parameters.Add(statusParameter);
 
-				var imageParameter = command.CreateParameter();
-				imageParameter.ParameterName = "@image";
-				imageParameter.Value = vehicle.VehicleImage ?? (object)DBNull.Value;
-				imageParameter.DbType = DbType.Binary;
-				command.Parameters.Add(imageParameter);
+                var imageParameter = command.CreateParameter();
+                imageParameter.ParameterName = "@image";
+                imageParameter.Value = vehicle.VehicleImage ?? (object)DBNull.Value;
+                imageParameter.DbType = DbType.Binary;
+                command.Parameters.Add(imageParameter);
 
-				var idParameter = command.CreateParameter();
+                var idParameter = command.CreateParameter();
                 idParameter.ParameterName = "@id";
                 idParameter.Value = vehicle.Id;
                 command.Parameters.Add(idParameter);

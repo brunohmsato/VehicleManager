@@ -47,13 +47,13 @@ namespace VehicleManager.Web.Controllers
                 _vehicleService.Add(vehicle);
                 return RedirectToAction("Index");
             }
-			catch (Exception ex)
+            catch (Exception)
             {
-                return View(vehicle);
+                return RedirectToAction("Error", "Home");
             }
         }
 
-			[HttpGet]
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             try
@@ -72,9 +72,9 @@ namespace VehicleManager.Web.Controllers
 
                 return View(_result);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -83,19 +83,19 @@ namespace VehicleManager.Web.Controllers
         {
             try
             {
-				if (imageFile != null && imageFile.Length > 0)
-				{
-					using var ms = new MemoryStream();
-					imageFile.CopyTo(ms);
-					vehicle.VehicleImage = ms.ToArray();
-				}
+                if (imageFile != null && imageFile.Length > 0)
+                {
+                    using var ms = new MemoryStream();
+                    imageFile.CopyTo(ms);
+                    vehicle.VehicleImage = ms.ToArray();
+                }
 
-				_vehicleService.Update(vehicle);
+                _vehicleService.Update(vehicle);
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return View(vehicle);
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -118,9 +118,9 @@ namespace VehicleManager.Web.Controllers
 
                 return View(_result);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -132,14 +132,10 @@ namespace VehicleManager.Web.Controllers
                 _vehicleService.Delete(id);
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Error", "Home");
             }
         }
-
-    
-
-
     }
 }

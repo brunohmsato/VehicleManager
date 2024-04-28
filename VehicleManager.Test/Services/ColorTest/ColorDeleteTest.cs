@@ -5,23 +5,23 @@ using VehicleManager.Infra.Data.DbContext;
 
 namespace VehicleManager.Test.Services.ColorTest
 {
-	public class ColorDeleteTest
-	{
-		[Fact]
-		public void Delete_CallsColorRepositoryDelete()
-		{
-			// Arrange
-			int idToDelete = 1;
+    public class ColorDeleteTest
+    {
+        [Fact]
+        public void Delete_CallsColorRepositoryDelete()
+        {
+            // Arrange
+            int idToDelete = 1;
 
-			var colorRepositoryMock = new Mock<IColorRepository>();
-			var contextMock = new Mock<ApplicationDbContext>();
-			var colorService = new ColorService(colorRepositoryMock.Object);
+            var colorRepositoryMock = new Mock<IColorRepository>();
+            var contextMock = new Mock<ApplicationDbContext>();
+            var colorService = new ColorService(colorRepositoryMock.Object);
 
-			// Act
-			colorService.Delete(idToDelete);
+            // Act
+            colorService.Delete(idToDelete);
 
-			// Assert
-			colorRepositoryMock.Verify(repo => repo.Delete(idToDelete), Times.Once);
-		}
-	}
+            // Assert
+            colorRepositoryMock.Verify(repo => repo.Delete(idToDelete), Times.Once);
+        }
+    }
 }
